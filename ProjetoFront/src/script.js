@@ -1,6 +1,6 @@
 let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
-const user = {
+const user = JSON.parse(localStorage.getItem('user')) || {
     level: 1,
     xp: 0,
     xpToNextLevel: 100
@@ -13,14 +13,17 @@ function addXP(amount) {
         user.xp -= user.xpToNextLevel
         user.level++
         user.xpToNextLevel = Math.floor(user.xpToNextLevel * 1.2) // dificuldade crescente
-        alert(`parabéns! vc subiu pro nível ${user.level} 🔥`)
+        alert(`Parabéns! Você subiu para o nível ${user.level} 🔥`)
     }
+
+    localStorage.setItem('user', JSON.stringify(user));
     
     updateUI()
 }
   
 function updateUI() {
-    document.querySelector('#level').textContent = `LV: ${user.level} ${user.xp}/${user.xpToNextLevel}`
+    document.querySelector('#level').textContent = `LV: ${user.level}`
+    document.querySelector('#xp-count').textContent = `${user.xp}/${user.xpToNextLevel}`
     document.querySelector('#xp-bar').style.width = `${(user.xp / user.xpToNextLevel) * 100}%`
 }
   
@@ -55,11 +58,14 @@ function renderTasks() {
         const div = document.createElement('div');
         div.className = 'task' + (task.done ? ' done' : '');
         div.innerHTML = `
-        <strong>${task.title}</strong><br>
-        <span>${task.description || ''}</span>
-        <div class="task-buttons">
-            <button onclick="toggleDone(${index})">${isConcluded ? "❌" : "✔️"}</button>
-            <button onclick="deleteTask(${index})">⛔</button>
+        <div class="task-info">
+            <strong class="task-number">${index + 1} -</strong>
+            <strong>${task.title}</strong><br>
+            <span>${task.description || ''}</span>
+        </div>
+        <div>
+            <span class="btn-task" onclick="toggleDone(${index})">${isConcluded ? "❌" : "✔️"}</span>
+            <span class="btn-task" onclick="deleteTask(${index})">⛔</span>
         </div>
         `;
         container.appendChild(div);

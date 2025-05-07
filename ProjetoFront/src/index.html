@@ -10,25 +10,28 @@
 <body>
     <main>
         <article>
-            <figure class="logo container">
-                <img src="logo.png" alt="">
-            </figure>
             <div>
-                <span id="level"></span>
+                <div class="level-info">
+                    <span id="level"></span>
+                    <span id="xp-count"></span>
+                </div>
                 <div class="xp-container">
-                <div id="xp-bar"></div>
+                    <div id="xp-bar"></div>
+                </div>
             </div>
+
+            <figure class="logo container">
+                <img src="../imgs/logo.png">
+            </figure>
         </article>
         
-        <section>
+        <section class="content-container">
             <form id="task-form">
-                <figure>
-                    <img src="" alt="">
-                </figure>
                 <input type="text" id="title" placeholder="Título da tarefa" required>
                 <textarea id="description" placeholder="Descrição (opcional)"></textarea>
-                <button type="submit">Adicionar</button>
+                <button class="btn-padrao" type="submit">Adicionar</button>
             </form>
+            
             <section id="tasks-container"></section>
         </section>
     </main>
