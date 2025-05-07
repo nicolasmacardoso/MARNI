@@ -1,3 +1,9 @@
+:root {
+    --main-color1: #215488;
+    --main-color2: #002553;
+    --main-color3: #d7d7d7;
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -11,6 +17,7 @@ body {
 }
 
 main {
+    position: relative;
     overflow: hidden;
     display: grid;
     grid-template-columns: 50% auto;
@@ -21,12 +28,22 @@ main {
     margin-top: 20px;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 4px 4px 14px -9px #215488;
+    box-shadow: 4px 4px 14px -9px var(--main-color1);
+}
+
+article {
+    z-index: 1;
+}
+
+.main-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
     background: linear-gradient(45deg, #d7d7d7eb, #ffffffc2), url(../imgs/fundo.jpg);
 }
 
 article {
-    border-right: 2px solid #215488;
+    border-right: 2px solid var(--main-color1);
     padding: 10px;
     padding-bottom: 0;
     display: grid;
@@ -58,8 +75,8 @@ article {
 }
 
 .xp-container {
-    border: 2px solid #215488;
-    box-shadow: inset 0px 0px 10px -2px #0058b1;
+    border: 2px solid var(--main-color1);
+    box-shadow: inset 0px 0px 10px -2px var(--main-color1);
     background: #96bce1;
     width: 100%;
     height: 20px;
@@ -74,7 +91,7 @@ article {
     width: 0%;
     z-index: 1;
     box-shadow: inset 0px 0px 15px 5px #002553;
-    background: #215488;
+    background: var(--main-color1);
     transition: width 0.3s ease-in-out;
 }
 
@@ -83,6 +100,7 @@ article {
     flex-direction: column;
     gap: 11px;
     overflow: auto;
+    z-index: 1;
 }
 
 form {
@@ -95,11 +113,11 @@ input, textarea, .btn-padrao {
     padding: 10px;
     font-size: 16px;
     border-radius: 4px;
-    border: 2px solid #215488;
+    border: 2px solid var(--main-color1);
 }
 
 .btn-padrao {
-    background-color: #215488;
+    background-color: var(--main-color1);
     color: white;
     border: none;
     cursor: pointer;
@@ -115,7 +133,7 @@ input, textarea, .btn-padrao {
     padding: 10px;
     margin-top: 10px;
     border-radius: 4px;
-    border: 2px solid #215488;
+    border: 2px solid var(--main-color1);
     justify-content: space-between;
     align-items: center;
 }
@@ -127,8 +145,8 @@ input, textarea, .btn-padrao {
 #tasks-container {
     overflow: auto;
     max-height: 100%;
-    border: 1px solid #215488;
-    border-width: 1px 0 1px;
+    border: 2px solid var(--main-color1);
+    border-width: 2px 0 2px;
     padding: 0 0 8px;
 }
 
@@ -145,7 +163,7 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100%;
-    background: #215488;
+    background: var(--main-color1);
     color: white;
     font-size: 15px;
     height: 20px;
@@ -171,7 +189,7 @@ footer {
 
     article {
         border-right: none;
-        border-bottom: 2px solid #215488;
+        border-bottom: 2px solid var(--main-color1);
     }
 
     .content-container {
