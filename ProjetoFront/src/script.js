@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const title = titleInput.value.trim();
         const description = descriptionInput.value.trim();
         if (title) {
-            tasks.push({ title, description, done: false });
+            tasks.push({ title, description, done: false, xpGiven: false });
             saveTasks();
             renderTasks();
             form.reset();
@@ -58,15 +58,22 @@ function renderTasks() {
         const div = document.createElement('div');
         div.className = 'task' + (task.done ? ' done' : '');
         div.innerHTML = `
-        <div class="task-info">
-            <strong class="task-number">${index + 1} -</strong>
-            <strong>${task.title}</strong><br>
-            <span>${task.description || ''}</span>
-        </div>
-        <div>
-            <span class="btn-task" onclick="toggleDone(${index})">${isConcluded ? "❌" : "✔️"}</span>
-            <span class="btn-task" onclick="deleteTask(${index})">⛔</span>
-        </div>
+            <div class="task-info">
+                <div class="task-icon-container">
+                    <img class="task-icon hidden" style="${isConcluded ? "" : "display:none;"}" src="../imgs/espada.png">
+                    <img class="task-icon" src="../imgs/espada.png">
+                </div>
+                
+                <p class="task-text">
+                    <strong class="task-number">${index + 1} -</strong>
+                    <strong>${task.title}</strong><br>
+                    <span>${task.description || ''}</span>
+                </p>
+            </div>
+            <div>
+                <span class="btn-task" onclick="toggleDone(${index}, this)">${isConcluded ? "❌" : "✔️"}</span>
+                <span class="btn-task" onclick="deleteTask(${index})">⛔</span>
+            </div>
         `;
         container.appendChild(div);
     });
@@ -76,14 +83,17 @@ function saveTasks() {
     localStorage.setItem('tasks', JSON.stringify(tasks));
 };
 
-function toggleDone(index) {
-    var isConcluded = tasks[index].done;
-    tasks[index].done = !isConcluded;
-    addXP(isConcluded ? -10 : 10)
+function toggleDone(index, elem) {
+    const task = tasks[index];
+    task.done = !task.done;
 
+    if (task.done && !task.xpGiven) {
+        addXP(10), task.xpGiven = true;
+    }
+    
     saveTasks();
     renderTasks();
-};
+}
 
 function deleteTask(index) {
     tasks.splice(index, 1);
