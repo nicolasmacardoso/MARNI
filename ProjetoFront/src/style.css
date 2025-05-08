@@ -1,13 +1,24 @@
+@font-face {
+    font-family: "Perfect DOS VGA";
+    src: url(../fontes/perfect_dos_vga_437/Perfect\ DOS\ VGA\ 437.ttf);
+}
+
+@font-face {
+    font-family: "Digitalix";
+    src: url(../fontes/digitalix/digitalix.ttf);
+}
+
 :root {
     --main-color1: #215488;
     --main-color2: #002553;
     --main-color3: #d7d7d7;
+    --fonte-padrao: "Perfect DOS VGA", Helvetica, sans-serif;
+    --fonte-extra: "Digitalix", Helvetica, sans-serif;
 }
 
 * {
     padding: 0;
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
@@ -28,7 +39,7 @@ main {
     margin-top: 20px;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 4px 4px 14px -9px var(--main-color1);
+    box-shadow: 4px 4px 8px -9px var(--main-color1);
 }
 
 article {
@@ -48,7 +59,7 @@ article {
     padding: 10px;
     padding-bottom: 0;
     display: grid;
-    grid-template-rows: 35px auto;
+    grid-template-rows: min-content auto;
     align-items: center;
     justify-content: center;
 }
@@ -72,7 +83,8 @@ article {
     font-weight: bold;
     font-size: 20px;
     color: #144983;
-    padding: 0px 5px;
+    padding: 5px 5px;
+    font-family: var(--fonte-extra);
 }
 
 .xp-container {
@@ -122,6 +134,7 @@ input, textarea, .btn-padrao {
     color: white;
     border: none;
     cursor: pointer;
+    font-family: var(--fonte-padrao);
 }
 
 .btn-padrao:hover {
@@ -160,8 +173,14 @@ input, textarea, .btn-padrao {
     transform: rotate(270deg);
 }
 
+.task-text {
+    font-family: var(--fonte-extra);
+}
+
 .btn-task {
     --webkit-appearance: none;
+    cursor: pointer;
+    user-select: none;
 }
 
 #tasks-container {
@@ -169,8 +188,12 @@ input, textarea, .btn-padrao {
     max-height: 100%;
     min-height: 50px;
     border: 2px solid var(--main-color1);
-    border-width: 2px 0 2px;
+    border-width: 0;
     padding: 0 0 8px;
+}
+
+#tasks-container:has(.task) {
+    border-width: 2px 0 2px;
 }
 
 .task.done {
@@ -179,6 +202,10 @@ input, textarea, .btn-padrao {
 
 .task.done .task-text {
     text-decoration: line-through;
+}
+
+.task-desc {
+    font-family: var(--fonte-padrao);
 }
 
 footer {
