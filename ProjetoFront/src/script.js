@@ -66,7 +66,7 @@ function renderTasks() {
                 
                 <p class="task-text">
                     <strong class="task-number">${index + 1} -</strong>
-                    <strong>${task.title}</strong><br>
+                    <strong class="task-title">${task.title}</strong><br>
                     <pre class="task-desc">${task.description || ''}</pre>
                 </p>
             </div>
