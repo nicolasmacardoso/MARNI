@@ -1,11 +1,11 @@
 @font-face {
     font-family: "Perfect DOS VGA";
-    src: url(../fontes/perfect_dos_vga_437/Perfect\ DOS\ VGA\ 437.ttf);
+    src: url(../fontes/Perfect\ DOS\ VGA\ 437.ttf);
 }
 
 @font-face {
     font-family: "Digitalix";
-    src: url(../fontes/digitalix/digitalix.ttf);
+    src: url(../fontes/digitalix.ttf);
 }
 
 :root {
