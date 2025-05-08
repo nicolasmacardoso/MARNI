@@ -142,7 +142,8 @@ input, textarea, .btn-padrao {
 }
 
 .task {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 50px;
     background: #e9ecef;
     padding: 10px;
     margin-top: 10px;
@@ -204,8 +205,26 @@ input, textarea, .btn-padrao {
     text-decoration: line-through;
 }
 
+.task-title {
+    line-height: 20px;
+    font-size: 13px;
+}
+
 .task-desc {
     font-family: var(--fonte-padrao);
+    grid-column: span 2;
+    white-space: pre-wrap;
+    
+    
+    
+    
+    p {
+  white-space: pre-wrap;
+};
+    
+    p {
+  white-space: pre-wrap;
+};
 }
 
 footer {
